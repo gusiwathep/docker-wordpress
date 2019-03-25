@@ -1,0 +1,15 @@
+steps:
+# Build the app image.
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/simple-docker-wordpress:$SHORT_SHA', '.' ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['login', '--username', 'tanit@bluehousetravel.com', '--password', 'gdK9iLkl9iN$', 'registry-intl.cn-shanghai.aliyuncs.com']
+##
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['image', 'tag', 'gcr.io/simple-docker-wordpress:$SHORT_SHA', 'registry-intl.cn-shanghai.aliyuncs.com/antifake/bonus-pad:latest']
+##
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'registry-intl.cn-shanghai.aliyuncs.com/antifake/bonus-pad:latest']
+
+images: [ 'gcr.io/$PROJECT_ID/simple-docker-wordpress:$SHORT_SHA' ]
