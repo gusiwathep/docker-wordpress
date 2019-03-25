@@ -3,13 +3,13 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/simple-docker-wordpress:$SHORT_SHA', '.' ]
 
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'Log in to Alibaba Cloud Docker Registry'
   args: ['login', '--username', 'tanit@bluehousetravel.com', '--password', 'gdK9iLkl9iN$', 'registry-intl.cn-shanghai.aliyuncs.com']
 ##
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['image', 'tag', 'gcr.io/simple-docker-wordpress:$SHORT_SHA', 'registry-intl.cn-shanghai.aliyuncs.com/antifake/bonus-pad:latest']
+- name: 'Copy image from the registry to Alibaba Cloud'
+  args: ['image', 'tag', 'gcr.io/$PROJECT_ID/simple-docker-wordpress:$SHORT_SHA', 'registry-intl.cn-shanghai.aliyuncs.com/antifake/bonus-pad:latest']
 ##
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'Push image to the registry'
   args: ['push', 'registry-intl.cn-shanghai.aliyuncs.com/antifake/bonus-pad:latest']
 
 images: [ 'gcr.io/$PROJECT_ID/simple-docker-wordpress:$SHORT_SHA' ]
