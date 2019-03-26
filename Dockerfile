@@ -56,4 +56,4 @@ EXPOSE 80
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/wp-login.php
+#HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/wp-login.php
