@@ -52,7 +52,7 @@ RUN { \
 		echo 'html_errors = Off'; \
 	} > /usr/local/etc/php/conf.d/error-logging.ini
 
-VOLUME /var/www/html
+VOLUME /var/www/simplewp
 
 ENV WORDPRESS_VERSION 5.1.1
 ENV WORDPRESS_SHA1 f1bff89cc360bf5ef7086594e8a9b68b4cbf2192
