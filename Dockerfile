@@ -23,7 +23,7 @@ WORKDIR /var/www/wp-content
 RUN chown -R nobody.nobody /var/www
 
 # WordPress
-ENV WORDPRESS_VERSION 5.1.1
+ENV WORDPRESS_VERSION 5.1
 ENV WORDPRESS_SHA1 830eadf0afa15928d7f6856b1b85bf57b8e1f585
 
 RUN mkdir -p /usr/src
@@ -56,4 +56,4 @@ EXPOSE 80
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
-#HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/wp-login.php
+HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/wp-login.php
